@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box      = "opscode-ubuntu-14.04"
     config.vm.box_url  = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box"
     #config.vm.network :forwarded_port, guest: 22, host: 2028, auto_correct: true
-		config.vm.network "public_network", ip: "192.168.0.25"
+    config.vm.network "public_network", ip: "192.168.0.25"
     config.vm.synced_folder ".", "/vagrant", disabled: true
 
     config.vm.provider "virtualbox" do |vb|
@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     # bootstrapping
-		config.vm.provision :shell, path: "bootstrap.sh"
+    config.vm.provision :shell, path: "bootstrap.sh"
 
     # install or update chef
     config.omnibus.chef_version = :latest
