@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "local" => {
                 "user"  => "vagrant",
                 "group" => "vagrant",
-								"ip"    => "192.168.0.25"
+                "ip"    => "192.168.0.25"
             }
         }
 
@@ -43,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             recipe[pxe]
             recipe[pxe::pxe-pdhcp]
             recipe[pxe::tftpd-hpa]
-						recipe[pxe::iso]
+            recipe[pxe::iso]
         ]
     end
 end
