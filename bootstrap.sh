@@ -1,5 +1,9 @@
 #!/bin/bash -ex
 
+if [ ! -f "/etc/sudoers.d/vagrant" ]; then
+    echo "Defaults:vagrant    !requiretty" > "/etc/sudoers.d/vagrant"
+fi
+
 if date | grep -q 'UTC'; then
     ln -fs "/usr/share/zoneinfo/Asia/Tokyo" "/etc/localtime"
 fi

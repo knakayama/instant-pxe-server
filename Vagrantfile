@@ -27,24 +27,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.omnibus.chef_version = :latest
 
     # run chef-solo
-    #config.vm.provision :chef_solo do |chef|
-    #    chef.custom_config_path = "Vagrantfile.chef"
-    #    chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
-    #    #chef.data_bags_path = "data_bags"
-    #    chef.json = {
-    #        "local" => {
-    #            "user"  => "vagrant",
-    #            "group" => "vagrant"
-    #        }
-    #    }
+    config.vm.provision :chef_solo do |chef|
+        chef.custom_config_path = "Vagrantfile.chef"
+        chef.cookbooks_path = ["site-cookbooks"]
+        #chef.data_bags_path = "data_bags"
+        chef.json = {
+            "local" => {
+                "user"  => "vagrant",
+                "group" => "vagrant",
+								"ip"    => "192.168.0.25"
+            }
+        }
 
-    #    chef.run_list = %w[
-    #        recipe[env::base]
-    #        recipe[env::setup]
-    #        recipe[lang::ruby]
-    #        recipe[lang::php]
-    #        recipe[nginx]
-    #    ]
-    #end
+        chef.run_list = %w[
+            recipe[pxe]
+            recipe[pxe::pxe-pdhcp]
+            recipe[pxe::tftpd-hpa]
+						recipe[pxe::iso]
+        ]
+    end
 end
 

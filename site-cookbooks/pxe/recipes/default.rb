@@ -3,10 +3,5 @@
 # Recipe:: default
 #
 
-%w{
-  base
-  pxe-pdhcp
-}.each do |recipe|
-  include_recipe "pxe::#{recipe}"
-end
+include_recipe "pxe::base"
 
