@@ -13,6 +13,7 @@ if grep -qF 'us.archive.ubuntu.com' "/etc/apt/sources.list"; then
 fi
 
 if [ ! -f "/root/updated.txt" ]; then
+    touch "/root/updated.txt"
     apt-get update -y
 fi
 
