@@ -12,6 +12,7 @@ if grep -qF 'us.archive.ubuntu.com' "/etc/apt/sources.list"; then
     sed -i 's@http://us\.archive\.ubuntu\.com\/ubuntu@http://jp\.archive\.ubuntu\.com/ubuntu@' "/etc/apt/sources.list"
 fi
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
+if [ ! -f "/root/updated.txt" ]; then
+    apt-get update -y
+fi
 
