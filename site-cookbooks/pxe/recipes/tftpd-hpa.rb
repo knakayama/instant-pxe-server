@@ -13,7 +13,7 @@ end
 service "tftpd-hpa" do
   action [:enable, :start]
   supports :status => true, :restart => true
-  subscribes :restart, "template[/etc/default/tftpd-hpa]"
+  subscribes :restart, "template[/etc/default/tftpd-hpa]", :immediately
 end
 
 directory "/home/#{node['local']['user']}/tftp" do
