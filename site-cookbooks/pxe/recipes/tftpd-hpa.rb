@@ -12,8 +12,8 @@ end
 
 service "tftpd-hpa" do
   action [:enable, :start]
-  supports :status => true, :restart => true, :reload => true
-  subscribes :reload, "template[/etc/default/tftpd-hpa]", :immediately
+  supports :status => true, :restart => true
+  subscribes :restart, "template[/etc/default/tftpd-hpa]"
 end
 
 directory "/home/#{node['local']['user']}/tftp" do
