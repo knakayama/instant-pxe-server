@@ -11,8 +11,8 @@ end
 
 bash "copy files" do
   code <<-EOT
-    cp -ipvr /mnt/install/netboot/* "/home/#{node['local']['user']}/tftp"
+    cp -ipvr /mnt/install/netboot/* "/var/lib/tftpboot"
   EOT
-  not_if { File.file?("/home/#{node['local']['user']}/tftp/pxelinux.0") }
+  not_if { File.file?("/var/lib/tftpboot/pxelinux.0") }
 end
 

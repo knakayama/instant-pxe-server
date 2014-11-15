@@ -16,10 +16,3 @@ service "tftpd-hpa" do
   subscribes :restart, "template[/etc/default/tftpd-hpa]", :immediately
 end
 
-directory "/home/#{node['local']['user']}/tftp" do
-  owner node['local']['user']
-  group node['local']['group']
-  mode 00755
-  action :create
-end
-
