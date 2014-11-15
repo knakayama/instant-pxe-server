@@ -3,6 +3,11 @@ package "tftpd-hpa" do
   action :install
 end
 
+service "tftpd-hpa" do
+  action [:enable, :start]
+  supports :status => true, :restart => true, :reload => true
+end
+
 template "/etc/default/tftpd-hpa" do
   source "tftpd-hpa.erb"
   owner  "root"
@@ -16,10 +21,5 @@ directory "/home/#{node['local']['user']}/tftp" do
   group node['local']['group']
   mode 00755
   action :create
-end
-
-service "tftpd-hpa" do
-  action [:enable, :start]
-  supports :status => true, :restart => true, :reload => true
 end
 
